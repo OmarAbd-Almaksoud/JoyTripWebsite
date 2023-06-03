@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center">
+    <button class="btn btn-success col-10 col-sm-8 col-md-8 col-lg-4" (click)="goToAddingNewOne()" appCardDirective><i class="fa-solid fa-plus mx-2"></i>CLICK ME TO ADD NEW TRIP</button>
+</div>
+
+
+  <table class="table table-bordered mt-5  text-center d-none d-sm-none d-md-block" style="margin-left: 4%;margin-right: 4%;">
+    <thead>
+      <tr>
+        <th scope="col">NU</th>
+        <th scope="col">TRIP IMAGE</th>
+        <th scope="col">TRIP NAME</th>
+        <th scope="col">TRIP PRICE</th>
+        <th scope="col">TRIP RATING</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of arrayForTrips, let i =index">
+        <th scope="row">{{i+1}}</th>
+        <td><img [src]="trip.imgURL" width="150px" height="150px"></td>
+        <td>{{trip.name}}</td>
+        <td>{{trip.price|currency:"EGP"}}</td>
+        <td>{{trip.ratingOfFive}}</td>
+        <td><button class="btn btn-success" (click)="updateTrip(trip.id)">UPDATE</button></td>
+        <td><button class="btn btn-danger" (click)="deleteTrip(trip.id)">DELETE</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered mt-5 text-center d-block d-sm-block d-md-none">
+    <thead>
+      <tr>
+        <th scope="col">NU</th>
+        <th scope="col">TRIP NAME</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of arrayForTrips, let i =index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{trip.name}}</td>
+        <td><button class="btn btn-success" (click)="updateTrip(trip.id)">UPDATE</button></td>
+        <td><button class="btn btn-danger" (click)="deleteTrip(trip.id)">DELETE</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+    
+
+
+
+ 
+<!-- Modal -->
+<div class="modal fade" id="warningModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Warning !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      WARNING ! you are deleting this item from your database , are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="confirmDeleting()">YES , delete it</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>

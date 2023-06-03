@@ -1,0 +1,54 @@
+
+<div >
+  <div class="col-md-12 d-flex justify-content-center">
+    <img src="https://cengage.force.com/resource/1607465003000/loginIcon"  height="200px">
+    
+  </div>
+  <div class="col-12 d-none d-sm-none d-md-none d-lg-flex  justify-content-center mt-4">
+    <h3>Type your email and password to login .</h3>
+  </div>
+   <div class="col-8" style="margin-left: 16%;">
+    <form class="row">
+      <div class="col-md-12">
+        
+        <label for="inputEmail4" class="form-label" >Email</label>
+        <input type="email" class="form-control" id="inputEmail4" #email>
+      </div>
+      <div class="col-md-12 mt-3">
+        <label for="inputPassword4" class="form-label" >Password</label>
+        <input type="password" class="form-control" id="inputPassword4"   #password>
+      </div>
+      <div class="col-12 mt-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+              Forget Password !
+          </label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button  class="btn btn-primary w-100 mt-3"  (click)="authService.SignIn(email.value,password.value)" >Sign in</button>
+       
+        <button  class="btn btn-primary w-100 mt-3"  (click)="authService.SignOut()" (click)="logOutState()">Log out</button>
+
+        <button  class="btn btn-success w-100 mt-3" routerLink="/register">I don't have an account, create one !</button>
+
+        <button  class="btn btn-success btn googleBtn w-100 mt-3" routerLink="/register" (click)="authService.GoogleAuth()"> <i class="fab fa-google-plus-g"></i> Log in with Google !</button>
+       
+      </div>
+    </form>
+    
+   </div>
+      <div *ngIf="userLoggedState" class="alert alert-success mt-3" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>You Successfully Logged in.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure We all here to serve you.</p>
+      </div>
+
+      <div *ngIf="!userLoggedState" class="alert alert-danger mt-3" role="alert">
+        <h4 class="alert-heading">You are logged out!</h4>
+        <p>You Successfully Logged out.</p>
+        <hr>
+      </div>
+</div>

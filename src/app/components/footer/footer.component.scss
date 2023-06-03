@@ -1,0 +1,8 @@
+.fa-brands,.fa-solid{
+    transition-property: all;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.fa-brands:hover,.fa-solid:hover{
+    scale: 1.2;
+}
