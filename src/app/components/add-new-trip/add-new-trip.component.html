@@ -1,0 +1,146 @@
+<div class="text-center">
+    <h3>FILL THIS FORM TO ADD NEW TRIP TO OUR DATABASE</h3>
+</div>
+<div class="my-5 p-3">
+    <form class="row g-3"  (ngSubmit)="addNewTrip()"  #tripForm="ngForm">
+        <div class="col-12">
+          <label for="tripName" class="form-label">Name Of Trip :</label>
+          <input type="text" class="form-control" id="tripName" name="tripName" placeholder="name of trip ..."  
+           [(ngModel)]="newTrip.name" required pattern="^[a-zA-Z0-9_ ]*$" #nameOfTrip="ngModel">
+           <div class="alert alert-danger" [hidden]="nameOfTrip.valid || nameOfTrip.untouched || nameOfTrip.pristine">
+            <small *ngIf="nameOfTrip.errors?.['required']" >name of trip is required.</small>
+            <small *ngIf="nameOfTrip.errors?.['pattern']" >name of trip must be at least 3 characters and max 100 characters.</small>
+           </div>
+        </div>
+
+
+        <div class="col-12">
+          <label for="tripPrice" class="form-label">Price :</label>
+          <input type="number" class="form-control" id="tripPrice" name="tripPrice" placeholder="price in egyptian pounds ..."
+            [(ngModel)]="newTrip.price" #tripPrice="ngModel" required min="100" max="10000">
+            <div class="alert alert-danger" [hidden]="tripPrice.valid || tripPrice.untouched ">
+                <small *ngIf="tripPrice.errors?.['required']" >price of trip is required.</small>
+                <small *ngIf="tripPrice.errors?.['min']" >minmum price is 100 EGP.</small>
+            <small *ngIf="tripPrice.errors?.['max']" >maximum price is 10000 EGP.</small>
+               </div>
+        </div>
+
+
+        <div class="col-12">
+            <label for="tickets" class="form-label">Number Of Tickets Are Offered :</label>
+            <input type="number" class="form-control" id="tickets" name="tickets" placeholder="number of tickets to offer ..." 
+             [(ngModel)]="newTrip.tickets" #tickets="ngModel" required>
+             <div class="alert alert-danger" [hidden]="tickets.valid || tickets.untouched ">
+                <small *ngIf="tickets.errors?.['required']" >price of trip is required.</small>
+               </div>
+          </div>
+        <div class="col-12">
+          <label for="duration" class="form-label">Duration of Trip in HOURS :</label>
+          <input type="number" class="form-control" id="duration" name="duration" placeholder="duration of trip in hours ..."  
+           [(ngModel)]="newTrip.duration" #duration="ngModel" min="2" max="24" required>
+           <div class="alert alert-danger" [hidden]="duration.valid || duration.untouched ">
+            <small *ngIf="duration.errors?.['required']" >price of trip is required.</small>
+            <small *ngIf="duration.errors?.['min']" >minmum duration is 2 hours.</small>
+            <small *ngIf="duration.errors?.['max']" >maximum duration is 24 hours.</small>
+
+           </div>
+        </div>
+        <div class="col-md-6">
+          <label for="Category" class="form-label">Category :</label>
+          <select id="Category" name="Category" class="form-select" [(ngModel)]="newTrip.category">
+            <option selected>choose...</option>
+            <option *ngFor="let category of newArrOfCat" >{{category}} </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+            <label for="available" class="form-label">Available :</label>
+            <select id="available" name="available" class="form-select"  [(ngModel)]="newTrip.available">
+                <option value="true" selected>NOW...</option>
+                <option value="false">SOON...</option>
+            </select>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center my-4">
+              <img [src]="newTrip.imgURL||test" width="150px" height="150px" style="border-radius: 50%;">
+          </div>
+            <label for="img1" class="form-label">Image For Trip (URL) ONE :</label>
+            <input type="text" class="form-control" id="img1" name="img1"  [(ngModel)]="newTrip.imgURL" #img1="ngModel"
+            placeholder="https://example.com"
+            pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+            required>
+            <div class="alert alert-danger" [hidden]="img1.valid || img1.untouched ">
+                <small *ngIf="img1.errors?.['required']" >image is required.</small>
+                <small *ngIf="img1.errors?.['pattern']" >input must be URL like ( https://example.com ).</small>
+               </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center my-4">
+              <img [src]="newTrip.imgURL2||test" width="150px" height="150px" style="border-radius: 50%;">
+          </div>
+            <label for="img2" class="form-label">Image For Trip (URL) TWO :</label>
+            <input type="text" class="form-control" id="img2" name="img2" placeholder="image 2 for trip (URL)"  [(ngModel)]="newTrip.imgURL2"
+            #img2="ngModel"
+            placeholder="https://example.com"
+            pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+            required>
+            <div class="alert alert-danger" [hidden]="img2.valid || img2.untouched ">
+                <small *ngIf="img2.errors?.['required']" >image is required.</small>
+                <small *ngIf="img2.errors?.['pattern']" >input must be URL like ( https://example.com ).</small>
+               </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center my-4">
+              <img [src]="newTrip.imgURL3||test" width="150px" height="150px" style="border-radius: 50%;">
+          </div>
+            <label for="img3" class="form-label">Image For Trip (URL) THREE :</label>
+            <input type="text" class="form-control" id="img3" name="img3" placeholder="image 3 for trip (URL)"  [(ngModel)]="newTrip.imgURL3" #img3="ngModel"
+            placeholder="https://example.com"
+            pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+            required>
+            <div class="alert alert-danger" [hidden]="img3.valid || img3.untouched ">
+                <small *ngIf="img3.errors?.['required']" >image is required.</small>
+                <small *ngIf="img3.errors?.['pattern']" >input must be URL like ( https://example.com ).</small>
+               </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center my-4">
+              <img [src]="newTrip.imgURL4||test" width="150px" height="150px" style="border-radius: 50%;">
+          </div>
+            <label for="img4" class="form-label">Image For Trip (URL) FOUR  :</label>
+            <input type="text" class="form-control" id="img4" name="img4" placeholder="image 4 for trip (URL)"  [(ngModel)]="newTrip.imgURL4"
+            placeholder="https://example.com"
+            pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+            required #img4="ngModel">
+            <div class="alert alert-danger" [hidden]="img4.valid || img4.untouched ">
+                <small *ngIf="img4.errors?.['required']" >image is required.</small>
+                <small *ngIf="img4.errors?.['pattern']" >input must be URL like ( https://example.com ).</small>
+               </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <label for="rating" class="form-label">Expected Rating of FIVE :</label>
+            <input type="number" id="rating" name="rating" class="form-select" min="1" max="5" [(ngModel)]="newTrip.ratingOfFive" 
+            placeholder="Choose number from 1 to 5 as expected rating..." #rating="ngModel" required>
+            <div class="alert alert-danger" [hidden]="rating.valid || rating.untouched " >
+                <small *ngIf="rating.errors?.['required']" >rating of trip is required.</small>
+                <small *ngIf="rating.errors?.['min']" >minmum rating is 1star.</small>
+                <small *ngIf="rating.errors?.['max']" >maximum rating is 5 stars.</small>
+    
+               </div>
+          </div>
+        <div class="col-12 d-flex justify-content-center mt-5">
+          <button type="submit" class="btn btn-primary w-50" [disabled]="tripForm.invalid" >COMPLETE PROCCESS AND ADD</button>
+        </div>
+      </form>
+     
+</div>
+
+ 

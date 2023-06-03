@@ -1,0 +1,42 @@
+.myBtn {
+    background-color: #f8f8f8;
+    padding: 8px;
+    width: 60%;
+    color: black;
+    border: 1px #707070 solid;
+    transition-property: all;
+    transition-duration: 0.5s;
+    margin-bottom: 10px;
+    font-size: smaller;
+  }
+  .myBtn:hover {
+    background-color: #c2c2c2;
+  }
+  .container {
+    width: 100%;
+    
+  }
+  .notfound {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  .card {
+    width: 11rem;
+  }
+  .con{
+    width: 60%;
+    margin-right: 15%;
+    margin-left: 29%;
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    .notfound {
+      width: 75% !important;
+      margin: 0;
+    }
+    .card {
+      margin-right: 13% !important;
+    }
+  }
+  

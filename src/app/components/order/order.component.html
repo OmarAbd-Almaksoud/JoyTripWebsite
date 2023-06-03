@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="my-3 d-block d-sm-block d-md-block d-lg-none d-xl-none">
+    <h1>Travel Memories You'll Never Forget</h1>
+     <h5> Turning the lights on at the Vatican Museums</h5>
+  </div>
+  <div class="title d-none d-sm-none d-md-none d-lg-block d-xl-block">
+    <h1>Travel Memories You'll Never Forget</h1>
+     <h5> Turning the lights on at the Vatican Museums</h5>
+  </div>
+  <img id="img" src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt592c0e4e8a0b1271/641347cc0c29c7363bf394b2/Vatican_Desktop.jpg?auto=webp"
+   width="100%" >
+</div>
+
+
+
+<div class="text-center">
+  <div class="d-flex flex-column align-items-center">
+    <label for="selectCategory" >Choose a Category For your Trip :</label>
+<select id="selectCategory" class="form-select my-3 text-center w-50 bar" aria-label="Default select example" [(ngModel)]="choosenCatId">
+    <option  value="0">All</option>
+    <option *ngFor="let cat of Icategory" [value]="cat.id">{{cat.name}}</option>
+  </select>
+  </div>
+<app-home [returnedCatId]="choosenCatId" (updateTotalPriceEvent)="funcToRunTheEvent($event)"></app-home>
+<div class="d-flex align-items-center justify-content-center mt-5 ">
+  <div class="card text-dark bg-light mb-3 text-center cart" style="max-width: 18rem;">
+    <div class="card-header cart text-white">My Cart :</div>
+    <div class="card-body cart text-white">
+      <img src="https://ps.w.org/product-total-price-for-woocommerce/assets/icon-256x256.png?rev=2509502">
+      <h4 class="card-title my-3" *ngIf="recivedTotalPriceFromChild!=0">Total Price In EGP : {{recivedTotalPriceFromChild|currency:'EGP'}}</h4>
+      <h4 class="card-title" *ngIf="recivedTotalPriceFromChild!=0">Total Price In USD : {{recivedTotalPriceFromChild|eGPtoDollars|currency:'USD':'symbol'}}</h4>
+      <p class="card-text"></p>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,19 @@
+.navbar-nav,
+.mr-auto {
+flex: 1;
+margin: auto !important;
+display: flex;
+justify-content: space-around;
+}
+a{
+  font-size:large;
+  font-weight: bold;
+  color: white !important;
+}
+nav{
+  background-color: #025464 !important;
+ 
+}
+button{
+  background-color: #F8F1F1;
+}

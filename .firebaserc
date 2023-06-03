@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "joytrips-6d980": {
+      "hosting": {
+        "joy-website": [
+          "joytrips-6d980"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "joytrips-6d980"
+  }
+}
