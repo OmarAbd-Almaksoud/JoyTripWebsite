@@ -1,9 +1,0 @@
-{
-  "hosting": [
-    {
-      "target": "joy-website",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
-}
