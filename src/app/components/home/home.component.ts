@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit,OnChanges,AfterViewInit{
       //   this.loader=false;
       //   this.tripsFromCatId=data;
       // })   
-      this.serviceAPI.getDataByCatID(+this.returnedCatId).subscribe(data=>{
+      this.serviceAPI.getTripsByCategoryIDFirebase(+this.returnedCatId).subscribe(data=>{
         this.tripsFromCatId=data;
         
       })
